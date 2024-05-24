@@ -48,6 +48,20 @@ def takeCommand():
 if __name__ == '__main__':
     # the the morning and non Or evening 
     wish() 
-    commandInString = takeCommand()
-    print(commandInString)
-    speak(commandInString)
+    while True:
+        commandInString = takeCommand()
+                #speak(commandInString)
+        if 'wikipedia' in commandInString:
+                speak("Searching in weekipedia")
+                commandInString.replace('wikipedia',"")
+                searchResult = wikipedia.summary(commandInString,sentences=2)
+                print(searchResult)
+                speak(searchResult) 
+        elif 'open youtube' in commandInString:
+            speak("Opening YouTube")
+            webbrowser.open("https://www.youtube.com/")
+        else:
+            speak("Now you can see result...")
+            webbrowser.open('https://www.google.com/search?q='+commandInString)
+            
+
